@@ -23,7 +23,7 @@ const preguntasMenu = [
     }
 ]
 
-const inquirerMenu = async () => {
+const menu = async () => {
     console.clear()
     console.log('=============================='.blue)
     console.log('    Seleccione una opción     ')
@@ -34,7 +34,7 @@ const inquirerMenu = async () => {
     return option
 }
 
-const inquirerPausa = async () => {
+const pausa = async () => {
 
     const msgPausa = [
         {
@@ -135,8 +135,8 @@ const mostrarListadoChecklist = async( tareas = []) => {
 }
 
 module.exports = {
-    inquirerMenu,
-    inquirerPausa,
+    menu,
+    pausa,
     leerInput,
     listadoTareasBorrar,
     confirmar,
