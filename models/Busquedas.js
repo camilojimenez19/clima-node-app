@@ -10,9 +10,9 @@ class Busquedas {
     
     async ciudad(lugar = ''){
 
-        // TODO: Peticion HTTP
+        // Peticion HTTP
 
-        console.log(lugar);
+        console.log({ lugar });
 
         return []; // retornar las ciudad que 
     }

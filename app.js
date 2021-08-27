@@ -15,9 +15,9 @@ const main = async() => {
 
         switch (option) {
             case 1:
-                // TODO: Mostrar el mensaje
+                // Mostrar el mensaje
                 const lugar = await leerInput('Ciudad: ')
-                console.log(lugar);
+                await busquedas.ciudad( lugar )
 
                 // TODO: Buscar los lugares
 

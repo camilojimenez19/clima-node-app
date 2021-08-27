@@ -1,29 +1,34 @@
 const inquirer = require('inquirer')
 require('colors')
 
-const preguntasMenu = [
-    {
-        type: 'list',
-        name: 'option',
-        message: 'Que deseas hacer?',
-        choices: [
-            {
-                value: 1,
-                name: `${'1.'.yellow} Buscar ciudad.`
-            },
-            {
-                value: 2,
-                name: `${'2.'.yellow} Historial.`
-            },
-            {
-                value: 0,
-                name: `${'0.'.yellow} Salir.`
-            },
-        ]
-    }
-]
-
+/**
+ * Menu principal
+ * @returns Opcion seleccionada
+ */
 const menu = async () => {
+
+    const preguntasMenu = [
+        {
+            type: 'list',
+            name: 'option',
+            message: 'Que deseas hacer?',
+            choices: [
+                {
+                    value: 1,
+                    name: `${'1.'.yellow} Buscar ciudad.`
+                },
+                {
+                    value: 2,
+                    name: `${'2.'.yellow} Historial.`
+                },
+                {
+                    value: 0,
+                    name: `${'0.'.yellow} Salir.`
+                },
+            ]
+        }
+    ]
+
     console.clear()
     console.log('=============================='.blue)
     console.log('    Seleccione una opción     ')
@@ -34,6 +39,9 @@ const menu = async () => {
     return option
 }
 
+/**
+ * Generar una pausa
+ */
 const pausa = async () => {
 
     const msgPausa = [
@@ -48,6 +56,11 @@ const pausa = async () => {
     await inquirer.prompt(msgPausa)
 }
 
+/**
+ * Mostrar un mensaje para obtener un string que dijita el usuario
+ * @param {string} message 
+ * @returns 
+ */
 const leerInput = async ( message = '' ) => {
     const question = [
         {
@@ -67,6 +80,27 @@ const leerInput = async ( message = '' ) => {
 
     return desc
 }
+
+
+/**
+ * Mesaje de confirmacion
+ * @param {string} message 
+ * @returns 
+ */
+const confirmar = async (message) => {
+
+    const pregunta = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            message
+        }
+    ]
+
+    const { ok } = await inquirer.prompt(pregunta)
+    return ok
+}
+
 
 const listadoTareasBorrar = async( tareas = [] ) => {
     const choices = tareas.map( (tarea, i) => {
@@ -94,20 +128,6 @@ const listadoTareasBorrar = async( tareas = [] ) => {
 
     const { id } = await inquirer.prompt(preguntas)
     return id
-}
-
-const confirmar = async (message) => {
-
-    const pregunta = [
-        {
-            type: 'confirm',
-            name: 'ok',
-            message
-        }
-    ]
-
-    const { ok } = await inquirer.prompt(pregunta)
-    return ok
 }
 
 const mostrarListadoChecklist = async( tareas = []) => {
