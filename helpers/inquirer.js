@@ -101,19 +101,23 @@ const confirmar = async (message) => {
     return ok
 }
 
-
-const listadoTareasBorrar = async( tareas = [] ) => {
-    const choices = tareas.map( (tarea, i) => {
+/**
+ * Mostramos en el menu un listado con los lugares para que el usuario seleccione un lugar
+ * @param {array} lugares 
+ * @returns 
+ */
+const listarLugares = async( lugares = [] ) => {
+    const choices = lugares.map( (lugar, i) => {
 
         const idx = `${i + 1}.`.green
         return {
-            value: tarea.id,
-            name: `${idx} ${tarea.descripcion}`
+            value: lugar.id,
+            name: `${idx} ${lugar.nombre}`
         }
     })
 
     choices.unshift({
-        value: '0',
+        value: 0,
         name: `${'0'.green} Cancelar`
     })
 
@@ -121,7 +125,7 @@ const listadoTareasBorrar = async( tareas = [] ) => {
         {
             type: 'list',
             name: 'id',
-            message: 'Borrar una tarea',
+            message: 'Seleccione un lugar:',
             choices 
         }
     ]
@@ -158,7 +162,7 @@ module.exports = {
     menu,
     pausa,
     leerInput,
-    listadoTareasBorrar,
+    listarLugares,
     confirmar,
     mostrarListadoChecklist
 }
