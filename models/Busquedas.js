@@ -35,7 +35,12 @@ class Busquedas {
 
     get historialCapitalizado(){
 
-        // return this.historial.map(lugar => lugar.t})
+        return this.historial.map(lugar => {
+            let palabras = lugar.split(' ')
+            palabras = palabras.map(p => p[0].toUpperCase() + p.substring(1))
+
+            return palabras.join(' ')
+        })
     }
 
     /**
@@ -103,6 +108,8 @@ class Busquedas {
         // Prevenir duplicados
         if(this.historial.includes( lugar.toLocaleLowerCase() )) return;
 
+        this.historial = this.historial.splice(0, 5)
+        
         this.historial.unshift(lugar.toLocaleLowerCase())
 
         // Grabar en DB o archivo de text
